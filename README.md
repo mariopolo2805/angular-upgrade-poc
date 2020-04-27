@@ -1,27 +1,49 @@
-# UpgradeApp
+# Día 1 - Angular | Ejercicios
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.26.
+Igual que hicimos con el otro bloque de ejercicios, vamos a clonarnos el repositorio con los ejercicios de Angular de esta primera sesión.
 
-## Development server
+La URL con los ejercicios es: **TODO** 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Debemos crearnos una rama con nuestro nombre `angular-sesion-1_Nombre_Apellido`. Y trabajar sobre dicha rama, para subirla a GitLab y solicitar una *Pull Request* (*Merge Request*) a `master`.
 
-## Code scaffolding
+En este caso encontraremos un proyecto angular iniciado (muy similar al que tendremos en local, si hemos seguido todos los pasos del temario). Debemos de completar el proyecto con los artefactos requeridos, y luego subirlo a GitLab.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Vamos a completar el proyecto Angular iniciado con algunos módulos y componentes.
 
-## Build
+### Módulo compartido
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Vamos a generar un nuevo módulo, pero en este caso no será un módulo asociado a la vista de estudiantes o a su detalle. Será un módulo **compartido** ¿y para qué? Pues para incluir ahí dentro todos los componentes que serán comunes de nuestra aplicación.
 
-## Running unit tests
+Genera un módulo llamado `shared` en el directorio `app/shared`, e impórtalo en el módulo principal de nuestra aplicación.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ahora enriquece el nuevo **shared.module.ts** con los módulos generales `FormsModule` y `ReactiveFormsModule`. Recuerda incluirlos en los arrays de **importación** (para poder hacer uso de ellos) y de **exportación** (para que puedan hacer uso otros módulos de nuestra aplicación).
 
-## Running end-to-end tests
+### Componente compartido
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Ahora que ya tenemos un módulo compartido, podemos generar nuestro primer componente compartido. Vamos a crear un componente botón, común a toda nuestra aplicación.
 
-## Further help
+Genera un componente `button` en la carpeta `app/shared`, y asegúrate de exportarlo en el módulo compartido, para que lo puedan usar los otros módulos de la aplicación.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Ahora declara `<app-button>` en el template del módulo `student-list`, y comprueba que hayas importado el módulo de shared en tu **student-list.module.ts**, sino Angular no sabe dónde buscar este nuevo botón.
+
+### Completa el módulo student-detail
+
+Perfecto, ahora vamos a completar nuestra aplicación añadiendo contenido al módulo **student-detail**. Deberas generar los siguientes componentes:
+
+- Componente padre `student-detail`
+- Componente hijo `student-detail-header`
+- Componente compartido `footer` en la carpeta shared
+
+Para poder visualizarlo todo, establece el otro componente `<app-student-detail>` debajo del `<app-student-list>` en el **app.component.html**. Y debajo de ambos, el `<app-footer>` común de toda la aplicación.
+
+Nos debería quedar una estructura de proyecto como esta:
+
+![./src/assets/1.png](./src/assets/1.png)
+
+Y todo ello visualizado en Chrome tal que así:
+
+![./src/assets/2.png](./src/assets/2.png)
+
+En posteriores lecciones aprenderemos a ocultar una sección u otra, e incluso estructuraremos diferentes rutas y páginas para cada módulo, pero por ahora, nos valdremos con los dos módulos visualizados a la vez.
+
+Ahora sube todos los cambios a tu rama y deja abierta la *Merge Request* contra master, ¡buen trabajo!
